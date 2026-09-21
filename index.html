@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="offwhite">
+<head>
+  <!-- @@ HTML-01  HEAD: title, description, fonts, first theme -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muhammad Talha Rehman | Digital Builder</title>
+  <meta name="description" content="Muhammad Talha Rehman: BSCS student, General Manager at DigiSukoon, content strategist, business developer and AI automation specialist.">
+
+  <!-- Fonts: Playfair Display (headings), Bodoni Moda (numbers, statement), Manrope (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Sets the saved theme before the page paints (prevents a flash).
+       Theme names: offwhite, cream, navy, sky, mix-offwhite-navy, mix-cream-navy, mix-offwhite-sky, mix-cream-sky -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var themes = ['offwhite', 'cream', 'navy', 'sky', 'mix-offwhite-navy', 'mix-cream-navy', 'mix-offwhite-sky', 'mix-cream-sky'];
+      var t;
+      try { t = localStorage.getItem('mtr-theme'); } catch (e) {}
+      if (themes.indexOf(t) === -1) {
+        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'navy' : 'offwhite';
+      }
+      root.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <!-- @@ HTML-02  LOADER (the name shown for a moment when the page opens) -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <span class="loader-name">Muhammad Talha Rehman</span>
+      <span class="loader-line"></span>
+    </div>
+  </div>
+
+  <!-- @@ HTML-03  HEADER: logo on the left; menu (with icons), theme switcher, Contact button on the right -->
+  <header class="site-header" id="siteHeader">
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <div class="wrap header-inner">
+      <a class="brand" href="#home" aria-label="Muhammad Talha Rehman, home">
+        <span class="brand-mark">MTR</span>
+        <span class="brand-name">Muhammad Talha Rehman</span>
+      </a>
+
+      <div class="header-right">
+        <!-- Menu links. To add a link: copy one <a> block and change href, icon and text -->
+        <nav class="nav" id="nav" aria-label="Main navigation">
+          <a href="#home"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
+          <a href="#about"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>About</span></a>
+          <a href="#capabilities"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>Capabilities</span></a>
+          <a href="#work"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Work</span></a>
+          <a href="#reviews" id="navReviews" hidden><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span>Reviews</span></a>
+          <a href="#contact"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Contact</span></a>
+        </nav>
+
+        <div class="header-actions">
+          <!-- Theme switcher (4 single colors + 4 combinations) -->
+          <div class="theme-switch">
+            <button class="icon-btn" id="themeBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="themeMenu" aria-label="Choose theme">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.7 1.8-1.7H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>
+            </button>
+            <div class="theme-menu" id="themeMenu" hidden>
+              <p class="theme-menu-title">Single colors</p>
+              <button type="button" class="theme-option" data-theme-choice="offwhite" aria-pressed="false"><span class="swatch swatch-offwhite"></span>Off-white</button>
+              <button type="button" class="theme-option" data-theme-choice="cream" aria-pressed="false"><span class="swatch swatch-cream"></span>Cream</button>
+              <button type="button" class="theme-option" data-theme-choice="navy" aria-pressed="false"><span class="swatch swatch-navy"></span>Dark Navy Blue</button>
+              <button type="button" class="theme-option" data-theme-choice="sky" aria-pressed="false"><span class="swatch swatch-sky"></span>Dark Sky Blue</button>
+                            <!-- HIDDEN COMBINATIONS (remove this comment wrapper to show them again)
+              <p class="theme-menu-title">Combinations</p>
+              <button type="button" class="theme-option" data-theme-choice="mix-offwhite-navy" aria-pressed="false"><span class="swatch swatch-mix-offwhite-navy"></span>Off-white + Navy</button>
+              <button type="button" class="theme-option" data-theme-choice="mix-cream-navy" aria-pressed="false"><span class="swatch swatch-mix-cream-navy"></span>Cream + Navy</button>
+              <button type="button" class="theme-option" data-theme-choice="mix-offwhite-sky" aria-pressed="false"><span class="swatch swatch-mix-offwhite-sky"></span>Off-white + Sky Blue</button>
+              <button type="button" class="theme-option" data-theme-choice="mix-cream-sky" aria-pressed="false"><span class="swatch swatch-mix-cream-sky"></span>Cream + Sky Blue</button>
+              -->
+            </div>
+          </div>
+
+          <a class="btn btn-primary btn-sm header-cta" href="#contact">Contact me</a>
+
+          <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- @@ HTML-04  HERO: intro text, buttons, numbers, photo -->
+    <section class="hero tone-a" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <!-- EDIT: small line above the headline -->
+          <p class="hero-identity load-in" style="--i:0">General Manager / BSCS Student</p>
+
+          <!-- EDIT: main headline (each line is one <span>) -->
+          <h1 class="hero-title">
+            <span class="line"><span class="load-line" style="--i:1">Muhammad</span></span>
+            <span class="line"><span class="load-line" style="--i:2">Talha </span></span>
+            <span class="line"><span class="load-line" style="--i:3">Rehman.</span></span>
+          </h1>
+
+          <!-- EDIT: paragraph under the headline -->
+          <p class="hero-lead load-in" style="--i:4">
+             A digital builder working across content strategy, business development, creative design and AI automation for startups.
+          </p>
+
+          <div class="hero-cta load-in" style="--i:5">
+            <a class="btn btn-primary" href="#work">View my work</a>
+            <a class="btn btn-ghost" href="#contact">Contact me</a>
+          </div>
+
+          <!-- EDIT: the three numbers -->
+          <dl class="metrics load-in" style="--i:6">
+            <div class="metric"><dt>Years of experience</dt><dd>2.5+</dd></div>
+            <div class="metric"><dt>BSCS semester</dt><dd>03</dd></div>
+            <div class="metric"><dt>Always learning and building</dt><dd>&infin;</dd></div>
+          </dl>
+        </div>
+
+        <!-- Profile photo (original colors, no overlay) -->
+        <div class="hero-visual load-in" style="--i:2">
+          <figure class="hero-image">
+            <!-- EDIT: your photo goes in assets/profile.jpg (change the file name here if different) -->
+            <img src="assets/profile.jpg" alt="Portrait of Muhammad Talha Rehman" data-fallback="MTR" width="640" height="800">
+          </figure>
+          <p class="hero-chip">Digital Builder</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- @@ HTML-05  CLIENTS STRIP: moving logo + name boxes (built from content.js -> PROJECTS) -->
+    <section class="strip tone-b" id="clients" aria-label="Brands I work with">
+      <div class="wrap">
+        <p class="strip-label">Brands I work with</p>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track" id="clientsTrack"></div>
+      </div>
+    </section>
+
+    <!-- @@ HTML-06  ABOUT: paragraphs, quick facts, skills (skills come from content.js -> SKILLS) -->
+    <section class="section tone-a" id="about">
+           <div class="wrap about-grid">
+        <div class="about-side">
+          <h2 class="section-title">About me :</h2>
+          <div class="about-card" data-reveal>
+            <img src="assets/about.jpg" alt="Muhammad Talha Rehman" data-fallback="MTR">
+          </div>
+        </div>
+        <div class="about-body" data-reveal>
+          <!-- EDIT: about paragraphs -->
+          <p>
+            I am a 3rd-semester BSCS student at Government College of Management Sciences (GCMS), Dera Ismail Khan, with 2.5+ years of experience in the digital field. I work at DigiSukoon as General Manager, along with roles in content strategy, business development, graphic design, and video editing.
+          </p>
+          <p>
+            I also work with different clients and agencies, including Saeed Visa Consultant. My main interests are technology, digital business, creative work, and AI automation for startups. I am working toward building practical digital solutions that combine technology and business.
+          </p>
+
+          <!-- EDIT: quick facts (copy one <div> line to add a fact) -->
+          <dl class="facts">
+            <div><dt>Studying</dt><dd>BSCS, Government College of Management Sciences (GCMS), Dera Ismail Khan</dd></div>
+            <div><dt>Working as</dt><dd>General Manager at DigiSukoon</dd></div>
+            <div><dt>Focus</dt><dd>AI automation for startups, content strategy, creative design</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- @@ HTML-07  CAPABILITIES: six items with icons (copy one <article> to add another) -->
+    <section class="section tone-b" id="capabilities">
+       <div class="cap-bg" aria-hidden="true"></div>
+      <div class="wrap">
+        <h2 class="section-title" data-reveal>What I Do</h2>
+        <p class="section-intro" data-reveal>Six areas where I take a brand from idea to finished digital work.</p>
+
+        <div class="cap-grid">
+          <article class="cap" data-reveal>
+            <span class="cap-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="8" height="8" rx="2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/></svg></span>
+            <h3>AI Automation</h3>
+            <p>Practical AI tools and workflows that remove repetitive work for startups.</p>
+          </article>
+          <article class="cap" data-reveal>
+            <span class="cap-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M14 4v5h5M8 13h8M8 17h6"/></svg></span>
+            <h3>Content Strategy</h3>
+            <p>Content plans built around what a brand needs to say and who needs to hear it.</p>
+          </article>
+          <article class="cap" data-reveal>
+            <span class="cap-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+            <h3>Business Development</h3>
+            <p>Finding opportunities and turning conversations into lasting client relationships.</p>
+          </article>
+          <article class="cap" data-reveal>
+            <span class="cap-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="5"/><rect x="11" y="11" width="9" height="9" rx="2"/></svg></span>
+            <h3>Graphic Design</h3>
+            <p>Social media graphics and brand visuals that stay consistent across channels.</p>
+          </article>
+          <article class="cap" data-reveal>
+            <span class="cap-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg></span>
+            <h3>Video Editing</h3>
+            <p>Clear, well-paced video content for brands, coaching, clinics and publishers.</p>
+          </article>
+          <article class="cap" data-reveal>
+            <span class="cap-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+            <h3>Digital Marketing</h3>
+            <p>Social media and campaign work that supports online growth.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- @@ HTML-08  WORK: featured client + project rows (both come from content.js) -->
+    <section class="section tone-a" id="work">
+      <div class="wrap">
+        <h2 class="section-title" data-reveal>Selected Work</h2>
+        <p class="section-intro" data-reveal>Brands and projects I am currently working on.</p>
+        <div id="featuredWork"></div>
+        <div class="work-list" id="workList"></div>
+      </div>
+    </section>
+
+    <!-- @@ HTML-09  STATEMENT: one big line on the left, double exposure image on the right -->
+    <section class="statement" aria-label="Statement">
+      <div class="wrap">
+        <!-- EDIT: statement sentence -->
+        <p class="statement-text" data-reveal>Practical digital solutions that combine technology and business.</p>
+      </div>
+
+      <!-- Double exposure image. EDIT: put your image at assets/statement.jpg.
+           Until that file exists, your profile photo (assets/profile.jpg) is used. -->
+      <div class="stmt-visual" aria-hidden="true">
+        <img class="stmt-photo" src="assets/statement.jpg" data-alt-src="assets/profile.jpg" data-fallback="" alt="">
+        <div class="stmt-texture">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <g fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="200" cy="230" r="40"/>
+              <circle cx="200" cy="230" r="85"/>
+              <circle cx="200" cy="230" r="135"/>
+              <circle cx="200" cy="230" r="190"/>
+              <circle cx="200" cy="230" r="250"/>
+              <path d="M200 230V-30M200 230L430 100M200 230L430 230M200 230L430 360M200 230V500M200 230L-30 360M200 230L-30 230M200 230L-30 100"/>
+              <path d="M-10 380C80 300 140 460 220 380S350 300 410 370"/>
+              <path d="M-10 420C90 350 150 500 230 420S360 350 410 410"/>
+            </g>
+            <g fill="currentColor">
+              <circle cx="200" cy="145" r="3.5"/><circle cx="285" cy="230" r="3.5"/>
+              <circle cx="115" cy="230" r="3.5"/><circle cx="260" cy="120" r="3"/>
+              <circle cx="140" cy="330" r="3"/><circle cx="330" cy="300" r="3"/>
+              <circle cx="70" cy="140" r="3"/><circle cx="345" cy="110" r="3"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- @@ HTML-10  CLIENT REVIEWS: hidden until you add reviews in content.js -> REVIEWS -->
+    <section class="section tone-b" id="reviews" hidden>
+      <div class="wrap">
+        <h2 class="section-title" data-reveal>Client Reviews</h2>
+        <p class="section-intro" data-reveal>What clients say about working with me.</p>
+        <div class="reviews" data-reveal>
+          <div class="reviews-track" id="reviewsTrack" tabindex="0" aria-label="Client reviews"></div>
+          <div class="reviews-controls" id="reviewsControls">
+            <button class="icon-btn" id="reviewPrev" type="button" aria-label="Previous review"></button>
+            <div class="dots" id="reviewsDots"></div>
+            <button class="icon-btn" id="reviewNext" type="button" aria-label="Next review"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- @@ HTML-11  CONTACT: links come from content.js -> PROFILE -->
+    <section class="section tone-a" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <h2 class="section-title" data-reveal>Let's Work Together</h2>
+          <p class="section-intro" data-reveal>Have a project, a role, or an idea to build?  Send me a message and I will get back to you.</p>
+        </div>
+        <ul class="contact-list" id="contactList" data-reveal></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- @@ HTML-12  FOOTER: brand on the left, quick links (with icons) on the right; copyright bottom left, contact icons + back to top bottom right -->
+  <footer class="site-footer tone-b">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <span class="footer-name">Muhammad Talha Rehman</span>
+        <p>BSCS Student &amp; Digital Professional specializing in AI Automation for Startups, Content Strategy, Business Development, and Creative Design.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#home"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
+        <a href="#about"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>About</span></a>
+        <a href="#capabilities"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg><span>Capabilities</span></a>
+        <a href="#work"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Work</span></a>
+        <a href="#contact"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Contact</span></a>
+      </nav>
+    </div>
+
+    <div class="wrap footer-bottom">
+      <p>&copy; <span id="year">2026</span> Muhammad Talha Rehman. All rights reserved.</p>
+      <div class="footer-actions">
+        <div class="footer-contact" id="footerContact"></div>
+        <a class="back-top" href="#home">Back to top<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- @@ HTML-13  SCRIPTS (content.js must stay BEFORE script.js) -->
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
