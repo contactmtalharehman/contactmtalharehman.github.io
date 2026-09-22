@@ -19,14 +19,14 @@ var PROFILE = {
 var SKILLS = [
   "AI Automation",
   "AI Tools & Workflows",
-  "Graphic Design",
-  "Video Editing",
   "Content Strategy",
   "Digital Marketing",
   "Business Development",
   "Client Management",
   "Social Media Management",
-  "Creative Direction"
+  "Creative Direction",
+  "Graphic Design",
+  "Video Editing"
 ];
 
 
