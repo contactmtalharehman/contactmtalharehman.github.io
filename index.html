@@ -324,5 +324,128 @@
   <!-- @@ HTML-13  SCRIPTS (content.js must stay BEFORE script.js) -->
   <script src="content.js"></script>
   <script src="script.js"></script>
+    <!-- ============ WIDGET MARKUP (copy this whole block) ============ -->
+  <button class="mtr-ai-btn" id="mtrAiToggle" aria-label="Open Talha's AI chat" aria-expanded="false">
+    <img src="assets/ai-bot.png" alt="Talha's AI">
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+
+  <div class="mtr-ai-panel" id="mtrAiPanel" role="dialog" aria-label="Talha's AI chat">
+    <div class="mtr-ai-head">
+      <div class="mtr-ai-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="8" width="16" height="12" rx="4"/>
+          <path d="M12 8V4"/><circle cx="12" cy="3" r="1.1" fill="currentColor" stroke="none"/>
+          <circle cx="9" cy="14" r="1.3" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="14" r="1.3" fill="currentColor" stroke="none"/>
+          <path d="M9 17.2c.8.6 1.9.9 3 .9s2.2-.3 3-.9"/>
+        </svg>
+      </div>
+      <div class="mtr-ai-headtext">
+        <strong>Talha's AI</strong>
+        <span><span class="mtr-ai-dot"></span> Usually replies instantly</span>
+      </div>
+      <button class="mtr-ai-close" id="mtrAiClose" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="mtr-ai-thread" id="mtrAiThread">
+      <div class="mtr-ai-welcome">
+        <p>Welcome to Talha's Portfolio 👋 — Ask me anything you're interested in.</p>
+        <div class="mtr-ai-suggestions">
+          <button class="mtr-ai-chip" data-preset="Show me your work">View My Work</button>
+          <button class="mtr-ai-chip" data-preset="What services do you offer?">My Services</button>
+          <button class="mtr-ai-chip" data-preset="I'd like to collaborate on a project">Let's Collaborate</button>
+        </div>
+      </div>
+    </div>
+
+    <form class="mtr-ai-inputbar" id="mtrAiForm">
+      <input type="text" id="mtrAiInput" placeholder="Message Talha's AI" autocomplete="off">
+      <button type="submit" class="mtr-ai-send" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <script>
+  (function(){
+    var toggle = document.getElementById('mtrAiToggle');
+    var panel  = document.getElementById('mtrAiPanel');
+    var closeBtn = document.getElementById('mtrAiClose');
+    var thread = document.getElementById('mtrAiThread');
+    var form   = document.getElementById('mtrAiForm');
+    var input  = document.getElementById('mtrAiInput');
+
+    function openPanel(){
+      panel.classList.add('is-open');
+      toggle.classList.add('is-open');
+      toggle.setAttribute('aria-expanded','true');
+      setTimeout(function(){ input.focus(); }, 200);
+    }
+    function closePanel(){
+      panel.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded','false');
+    }
+    toggle.addEventListener('click', function(){
+      panel.classList.contains('is-open') ? closePanel() : openPanel();
+    });
+    closeBtn.addEventListener('click', closePanel);
+
+    function addMessage(text, from){
+      var el = document.createElement('div');
+      el.className = 'mtr-ai-msg from-' + from;
+      el.textContent = text;
+      thread.appendChild(el);
+      thread.scrollTop = thread.scrollHeight;
+      return el;
+    }
+
+    function showTyping(){
+      var el = document.createElement('div');
+      el.className = 'mtr-ai-msg from-bot is-typing';
+      el.textContent = 'Typing...';
+      thread.appendChild(el);
+      thread.scrollTop = thread.scrollHeight;
+      return el;
+    }
+
+    /* ---------------------------------------------------------
+       This is the function to wire up to the Claude API later.
+       Right now it returns a placeholder reply after a short delay.
+    --------------------------------------------------------- */
+    function sendMessageToAI(userMessage){
+      var typingEl = showTyping();
+      // Placeholder behavior — replace the inside of this block
+      // with a fetch() call to your serverless function, see the
+      // guide after this artifact.
+      setTimeout(function(){
+        typingEl.remove();
+        addMessage("Thanks for your message! (AI connection coming soon.)", 'bot');
+      }, 900);
+    }
+
+    function handleUserMessage(text){
+      var trimmed = text.trim();
+      if(!trimmed) return;
+      addMessage(trimmed, 'user');
+      sendMessageToAI(trimmed);
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      handleUserMessage(input.value);
+      input.value = '';
+    });
+
+    document.querySelectorAll('.mtr-ai-chip').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        handleUserMessage(btn.getAttribute('data-preset'));
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
