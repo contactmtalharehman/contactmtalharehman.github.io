@@ -416,17 +416,61 @@
        This is the function to wire up to the Claude API later.
        Right now it returns a placeholder reply after a short delay.
     --------------------------------------------------------- */
-    function sendMessageToAI(userMessage){
-      var typingEl = showTyping();
-      // Placeholder behavior — replace the inside of this block
-      // with a fetch() call to your serverless function, see the
-      // guide after this artifact.
-      setTimeout(function(){
-        typingEl.remove();
-        addMessage("Thanks for your message! (AI connection coming soon.)", 'bot');
-      }, 900);
+    /* ---------------------------------------------------------
+       FREE MODE: keyword-based replies, no API needed.
+       When ready to upgrade to a real AI model later, only this
+       function needs to change (swap it for a fetch() call).
+    --------------------------------------------------------- */
+    var MTR_REPLIES = [
+      {
+        keywords: ['work', 'project', 'portfolio', 'client', 'clients'],
+        reply: "I've worked with clients like DigiSukoon, MUMKIN Coaching, TheraVive PhysioCare, AURAQ Publications, Saadi Perfumes and more. Scroll down to the Work section to see the full list, or ask me about a specific one."
+      },
+      {
+        keywords: ['service', 'services', 'offer', 'help with', 'what do you do'],
+        reply: "I work across content strategy, business development, graphic design, video editing, digital marketing, and AI automation for startups."
+      },
+      {
+        keywords: ['collab', 'collaborate', 'hire', 'work together', 'project idea'],
+        reply: "I'd love to hear more about your project. The best way to reach me is through the Contact section below — email, WhatsApp, or LinkedIn."
+      },
+      {
+        keywords: ['contact', 'email', 'reach', 'whatsapp', 'linkedin', 'phone', 'number'],
+        reply: "You can reach me at contactmtalharehman@gmail.com, on WhatsApp, or on LinkedIn. All three are linked in the Contact section of this site."
+      },
+      {
+        keywords: ['digisukoon'],
+        reply: "I'm General Manager at DigiSukoon, where I lead content strategy, business development, graphic design, and video editing while helping businesses launch and scale online stores."
+      },
+      {
+        keywords: ['who are you', 'about you', 'about yourself', 'your name'],
+        reply: "I'm Muhammad Talha Rehman (Khan) — a digital builder working in content strategy, business development, creative design, and AI automation. This chat is here to help you learn more about my work."
+      },
+      {
+        keywords: ['ai', 'automation'],
+        reply: "AI automation is one of my core focus areas — building practical AI tools and workflows that remove repetitive work for startups and businesses."
+      }
+    ];
+
+    function findReply(userMessage){
+      var text = userMessage.toLowerCase();
+      for (var i = 0; i < MTR_REPLIES.length; i++) {
+        var item = MTR_REPLIES[i];
+        for (var j = 0; j < item.keywords.length; j++) {
+          if (text.indexOf(item.keywords[j]) !== -1) return item.reply;
+        }
+      }
+      return "Thanks for your message! For anything specific, the best way to reach me directly is through the Contact section — email, WhatsApp, or LinkedIn.";
     }
 
+    function sendMessageToAI(userMessage){
+      var typingEl = showTyping();
+      var delay = 500 + Math.random() * 500;
+      setTimeout(function(){
+        typingEl.remove();
+        addMessage(findReply(userMessage), 'bot');
+      }, delay);
+    }
     function handleUserMessage(text){
       var trimmed = text.trim();
       if(!trimmed) return;
