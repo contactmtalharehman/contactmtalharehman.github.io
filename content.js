@@ -56,6 +56,7 @@ var FEATURED = {
 var PROJECTS = [
   {
     name: "MUMKIN Coaching",
+     url: "https://mumkin.co/",
     logo: "assets/mumkin.png",
     fallback: "MC",
     text: "Creating and designing video content for a professional coaching brand and supporting its social media presence.",
@@ -63,6 +64,7 @@ var PROJECTS = [
   },
   {
     name: "TheraVive PhysioCare",
+    url: "https://theravivephysiocare.co.uk/",
     logo: "assets/theravive.png",
     fallback: "TP",
     text: "Working on content strategy and video design for a physiotherapy clinic.",
@@ -70,6 +72,7 @@ var PROJECTS = [
   },
   {
     name: "AURAQ Publications",
+    url: "https://auraqpublications.com/",
     logo: "assets/auraq.png",
     fallback: "AQ",
     text: "Creating and designing video content for a professional publishing company and supporting its social media presence.",
@@ -77,6 +80,7 @@ var PROJECTS = [
   },
   {
     name: "Saeed Visa Consultant",
+    url: "https://saeedvisaconsultants.com/",
     logo: "assets/saeedvisa.png",
     fallback: "SV",
     text: "Currently working with the consultancy agency on digital content, creative work, and business-related activities.",
@@ -84,6 +88,7 @@ var PROJECTS = [
   },
   {
     name: "Fauzia Cooks",
+    url: "https://fauziacooks.shop/",
     logo: "assets/fauziacooks.png",
     fallback: "FC",
     text: "Creating and designing video content and supporting the brand's social media presence through content strategy and creative work.",
@@ -91,6 +96,7 @@ var PROJECTS = [
   },
   {
     name: "Saadi Perfumes",
+    url: "https://web.facebook.com/SaadiPerfumes",
     logo: "assets/saadiperfumes.png",
     fallback: "SP",
     text: "Creating and designing video content for a perfume brand and supporting its social media presence.",
@@ -98,6 +104,7 @@ var PROJECTS = [
   },
   {
     name: "Gul Badan",
+    url: "https://web.facebook.com/thegulbadan",
     logo: "assets/gulbadan.png",
     fallback: "GB",
     text: "Creating and designing video content and supporting the brand's social media presence through content strategy and creative work.",

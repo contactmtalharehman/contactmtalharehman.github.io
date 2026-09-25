@@ -191,13 +191,17 @@
     var el = $('workList');
     if (!el || typeof PROJECTS === 'undefined') return;
     el.innerHTML = PROJECTS.map(function (p) {
+      var nameHtml = p.url
+        ? '<a class="work-link" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.name) +
+          '<svg class="work-link-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>'
+        : esc(p.name);
       return '<article class="work-item" data-reveal>' +
         '<span class="client-logo work-logo">' + logoImg(p.logo, p.fallback, p.name) + '</span>' +
-        '<div class="work-body"><h3>' + esc(p.name) + '</h3><p>' + esc(p.text) + '</p>' + tagsHtml(p.tools) + '</div>' +
+        '<div class="work-body"><h3>' + nameHtml + '</h3><p>' + esc(p.text) + '</p>' + tagsHtml(p.tools) + '</div>' +
       '</article>';
     }).join('');
   }
-
+  
   function renderContact() {
     var items = [
       { icon: ICONS.email, title: 'Send an email', sub: PROFILE.email, href: 'mailto:' + PROFILE.email, ext: false, label: 'Email' },
